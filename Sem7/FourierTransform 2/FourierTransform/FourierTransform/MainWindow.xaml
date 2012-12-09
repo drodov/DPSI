@@ -1,0 +1,122 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:chartingToolkit="clr-namespace:System.Windows.Controls.DataVisualization.Charting;assembly=System.Windows.Controls.DataVisualization.Toolkit" x:Class="FourierTransform.MainWindow"
+        Title="Fourier Transform" Height="500" Width="600" Loaded="Window_Loaded_1">
+
+    <Grid>
+        <TabControl HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Name="TabControl">
+            <TabItem Header="Base Chart" Name="BaseChartTabItem">
+                <Grid Background="#FFE5E5E5">
+                    <Button Content="Calculate Convolution" x:Name="CalcConvolutionButton" HorizontalAlignment="Left" VerticalAlignment="Top" Click="CalcConvolutionButton_Click"/>
+                    <chartingToolkit:Chart Name="BaseChart">
+                        <chartingToolkit:LineSeries 
+                        Title="y0=sin(x) + cos(4x)" 
+                        ItemsSource="{Binding [0]}" 
+                        IndependentValuePath="X" 
+                        DependentValuePath="Y" 
+                >
+                            <chartingToolkit:LineSeries.DependentRangeAxis>
+                                <chartingToolkit:LinearAxis 
+                                Orientation="Y" 
+                                Title="Y Value" 
+                                ShowGridLines="False"
+                        />
+                            </chartingToolkit:LineSeries.DependentRangeAxis>
+                        </chartingToolkit:LineSeries>
+                        <chartingToolkit:LineSeries 
+                        Title="y=sin(x)" 
+                        ItemsSource="{Binding [1]}" 
+                        IndependentValuePath="X" 
+                        DependentValuePath="Y" 
+                >
+                            <chartingToolkit:LineSeries.DependentRangeAxis>
+                                <chartingToolkit:LinearAxis 
+                                Orientation="Y" 
+                                Title="Y Value" 
+                                ShowGridLines="False"
+                        />
+                            </chartingToolkit:LineSeries.DependentRangeAxis>
+                        </chartingToolkit:LineSeries>
+                        <chartingToolkit:LineSeries 
+                        Title="z=cos(4x)" 
+                        ItemsSource="{Binding [2]}" 
+                        IndependentValuePath="X" 
+                        DependentValuePath="Y" 
+                >
+                            <chartingToolkit:LineSeries.DependentRangeAxis>
+                                <chartingToolkit:LinearAxis 
+                                Orientation="Y" 
+                                Title="Y Value" 
+                                ShowGridLines="False"
+                        />
+                            </chartingToolkit:LineSeries.DependentRangeAxis>
+                        </chartingToolkit:LineSeries>
+
+                        <chartingToolkit:Chart.Axes>
+                            <chartingToolkit:LinearAxis Orientation="X"  
+                                        Title="X Value" 
+                                        ShowGridLines="False" 
+                                        />
+                        </chartingToolkit:Chart.Axes>
+                    </chartingToolkit:Chart>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Covolution" IsEnabled="False" Name="ConvolutionTabItem">
+                <Grid Background="#FFE5E5E5">
+                    <Button Content="Calculate Correlation" x:Name="CalcCorrelationButton" HorizontalAlignment="Left" VerticalAlignment="Top" Click="CalcCorrelationButton_Click"/>
+                    <chartingToolkit:Chart Name="ConvolutionChart">
+                        <chartingToolkit:LineSeries 
+                        Title="F(y)" 
+                        ItemsSource="{Binding [0]}" 
+                        IndependentValuePath="X" 
+                        DependentValuePath="Y" 
+                >
+                            <chartingToolkit:LineSeries.DependentRangeAxis>
+                                <chartingToolkit:LinearAxis 
+                                Orientation="Y" 
+                                Title="Y" 
+                                ShowGridLines="False"
+                        />
+                            </chartingToolkit:LineSeries.DependentRangeAxis>
+                        </chartingToolkit:LineSeries>
+
+                        <chartingToolkit:Chart.Axes>
+                            <chartingToolkit:LinearAxis Orientation="X"  
+                                        Title="X" 
+                                        ShowGridLines="False" 
+                                        />
+                        </chartingToolkit:Chart.Axes>
+                    </chartingToolkit:Chart>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Correlation" Name="CorrelationTabItem" IsEnabled="False">
+                <Grid Background="#FFE5E5E5">
+                    <chartingToolkit:Chart Name="CorrelationChart">
+                        <chartingToolkit:LineSeries 
+                        Title="Correlation" 
+                        ItemsSource="{Binding [0]}" 
+                        IndependentValuePath="X" 
+                        DependentValuePath="Y" 
+                >
+                            <chartingToolkit:LineSeries.DependentRangeAxis>
+                                <chartingToolkit:LinearAxis 
+                                Orientation="Y" 
+                                Title="Y Value" 
+                                ShowGridLines="False"
+                        />
+                            </chartingToolkit:LineSeries.DependentRangeAxis>
+                        </chartingToolkit:LineSeries>
+
+                        <chartingToolkit:Chart.Axes>
+                            <chartingToolkit:LinearAxis Orientation="X"  
+                                        Title="X Value" 
+                                        ShowGridLines="False" 
+                                        />
+                        </chartingToolkit:Chart.Axes>
+                    </chartingToolkit:Chart>
+                </Grid>
+            </TabItem>
+        </TabControl>
+    </Grid>
+</Window>

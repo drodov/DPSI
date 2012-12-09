@@ -1,0 +1,5 @@
+C:\Users\Dmitry\Documents\Visual Studio 2012\Projects\FourierTransform\NumericHepler\bin\Debug\NumericHepler.dll
+C:\Users\Dmitry\Documents\Visual Studio 2012\Projects\FourierTransform\NumericHepler\bin\Debug\NumericHepler.pdb
+C:\Users\Dmitry\Documents\Visual Studio 2012\Projects\FourierTransform\NumericHepler\obj\Debug\NumericHepler.dll
+C:\Users\Dmitry\Documents\Visual Studio 2012\Projects\FourierTransform\NumericHepler\obj\Debug\NumericHepler.pdb
+C:\Users\Dmitry\Documents\Visual Studio 2012\Projects\FourierTransform\NumericHepler\obj\Debug\NumericHepler.csprojResolveAssemblyReference.cache

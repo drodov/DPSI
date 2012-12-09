@@ -1,0 +1,45 @@
+﻿<Window x:Class="ImageProcessing.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:chartingToolkit="clr-namespace:System.Windows.Controls.DataVisualization.Charting;assembly=System.Windows.Controls.DataVisualization.Toolkit"
+        Title="MainWindow" Height="600" Width="700">
+    <Grid>
+        <Menu Height="25" VerticalAlignment="Top" HorizontalAlignment="Stretch">
+            <MenuItem Header="Open File" Click="MenuItem_Click_1"/>
+            <MenuItem Header="Settings" Click="SettingsItem_Click"/>
+            <MenuItem Header="Preparation1" Click="Preparation1_Click"/>
+            <MenuItem Header="Preparation2" Click="Preparation2_Click"/>
+            <MenuItem Header="Operator Roberts" Click="OpRoberts_Click"/>
+        </Menu>
+        <Grid Margin="0,25,0,0" ShowGridLines="True">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <Image Name="Image1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="0" Grid.Column="0"/>
+            <Image Name="Image2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="0" Grid.Column="1"/>
+            <chartingToolkit:Chart Grid.Row="1" Grid.Column="0" Name="Chart1">
+                <chartingToolkit:ColumnSeries 
+                        Title="" 
+                        ItemsSource="{Binding}" 
+                        IndependentValuePath="X" 
+                        DependentValuePath="Y" 
+                >
+                </chartingToolkit:ColumnSeries>
+            </chartingToolkit:Chart>
+            <chartingToolkit:Chart Grid.Row="1" Grid.Column="1" Name="Chart2">
+                <chartingToolkit:ColumnSeries 
+                        Title="" 
+                        ItemsSource="{Binding}" 
+                        IndependentValuePath="X" 
+                        DependentValuePath="Y" 
+                >
+                </chartingToolkit:ColumnSeries>
+            </chartingToolkit:Chart>
+        </Grid>
+    </Grid>
+</Window>

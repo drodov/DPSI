@@ -1,0 +1,7 @@
+C:\Users\Dmitry\documents\visual studio 2012\Projects\FourierTransform\FourierTransformLib\obj\Debug\FourierTransformLib.csprojResolveAssemblyReference.cache
+C:\Users\Dmitry\documents\visual studio 2012\Projects\FourierTransform\FourierTransformLib\bin\Debug\FourierTransformLib.dll
+C:\Users\Dmitry\documents\visual studio 2012\Projects\FourierTransform\FourierTransformLib\bin\Debug\FourierTransformLib.pdb
+C:\Users\Dmitry\documents\visual studio 2012\Projects\FourierTransform\FourierTransformLib\obj\Debug\FourierTransformLib.dll
+C:\Users\Dmitry\documents\visual studio 2012\Projects\FourierTransform\FourierTransformLib\obj\Debug\FourierTransformLib.pdb
+C:\Users\Dmitry\Documents\Visual Studio 2012\Projects\FourierTransform\FourierTransformLib\bin\Debug\NumericHepler.dll
+C:\Users\Dmitry\Documents\Visual Studio 2012\Projects\FourierTransform\FourierTransformLib\bin\Debug\NumericHepler.pdb

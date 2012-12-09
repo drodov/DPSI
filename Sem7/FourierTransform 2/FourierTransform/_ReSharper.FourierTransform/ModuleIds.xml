@@ -1,0 +1,5 @@
+<Modules>
+  <Module PersistentId="F81B3857-3091-47FA-A47C-C526DE7B6B51" ModuleId="FourierTransform" />
+  <Module PersistentId="632E93D0-FB72-4154-B706-A9E6B6775043" ModuleId="FourierTransformLib" />
+  <Module PersistentId="54693C41-B808-4D3D-876A-4D8556B1BB29" ModuleId="NumericHepler" />
+</Modules>

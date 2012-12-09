@@ -1,0 +1,3 @@
+C:\Users\Dmitry\Documents\Visual Studio 2012\Projects\Fourier Walsh 3\FourierTransform\bin\Debug\FourierTransform.exe.config
+C:\Users\Dmitry\Documents\Visual Studio 2012\Projects\Fourier Walsh 3\FourierTransform\obj\Debug\FourierTransform.exe
+C:\Users\Dmitry\Documents\Visual Studio 2012\Projects\Fourier Walsh 3\FourierTransform\obj\Debug\FourierTransform.pdb
