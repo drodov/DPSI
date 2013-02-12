@@ -12,8 +12,6 @@ namespace ImageHelper
 
         private static int _counter = 0;
 
-        private static int[,] _borders;
-
         public static Bitmap BitmapImage2Bitmap(BitmapImage bitmapImage)
         {
             Bitmap bitmap;
@@ -98,7 +96,7 @@ namespace ImageHelper
 
             int[,] pixels = GetPixelValueArray(bitmap);
 
-            _borders = new int[bitmap.Width, bitmap.Height];
+            var borders = new int[bitmap.Width, bitmap.Height];
 
             var labels = new int[bitmap.Width, bitmap.Height];
             int L = 1; // labels должна быть обнулена
@@ -106,15 +104,169 @@ namespace ImageHelper
             {
                 for (int x = 0; x < (int)bitmap.Width; x++)
                 {
-                    Fill(bitmap, pixels, ref labels, x, y, L++);
+                    Fill(bitmap, pixels, ref labels, ref borders, x, y, L++);
+                }
+            }
+
+            DrawImage(bitmap, labels, borders);
+
+            return Bitmap2BitmapImage(bitmap);
+        }
+
+        private static void Fill(Bitmap bitmap, int[,] pixels, ref int[,] labels, ref int[,] borders, int x, int y, int L)
+        {
+            _counter++;
+            if (_counter < 6500)
+            {
+                if ((labels[x, y] == 0) && pixels[x, y] == 0)
+                {
+                    labels[x, y] = L;
+                    if (x > 0)
+                    {
+                        Fill(bitmap, pixels, ref labels, ref borders, x - 1, y, L);
+                    }
+                    if (x > 0 && y > 0)
+                    {
+                        Fill(bitmap, pixels, ref labels, ref borders, x - 1, y - 1, L);
+                    }
+                    if (y > 0)
+                    {
+                        Fill(bitmap, pixels, ref labels, ref borders, x, y - 1, L);
+                    }
+                    if (x < bitmap.Width - 1 && y > 0)
+                    {
+                        Fill(bitmap, pixels, ref labels, ref borders, x + 1, y - 1, L);
+                    }
+                    if (x < bitmap.Width - 1)
+                    {
+                        Fill(bitmap, pixels, ref labels, ref borders, x + 1, y, L);
+                    }
+                    if (x < bitmap.Width - 1 && y < bitmap.Height - 1)
+                    {
+                        Fill(bitmap, pixels, ref labels, ref borders, x + 1, y + 1, L);
+                    }
+                    if (y < bitmap.Height - 1)
+                    {
+                        Fill(bitmap, pixels, ref labels, ref borders, x, y + 1, L);
+                    }
+                    if (x > 0 && y < bitmap.Height - 1)
+                    {
+                        Fill(bitmap, pixels, ref labels, ref borders, x - 1, y + 1, L);
+                    }
+                }
+            }
+            else
+            {
+                borders[x, y] = 1;
+            }
+            _counter--;
+        }
+
+        private static void DrawImage(Bitmap bitmap, int[,] labels, int[,] borders)
+        {
+            Dictionary<int, byte> colors = GetColors((int)bitmap.Width, (int)bitmap.Height, ref labels, borders);
+
+            for (int y = 0; y < (int)bitmap.Height; y++)
+            {
+                for (int x = 0; x < (int)bitmap.Width; x++)
+                {
+                    bitmap.SetPixel(x, y, (new HSV(0, 0, colors[labels[x, y]])).ToColor());
+                }
+            }
+        }
+
+        private static Dictionary<int, byte> GetColors(int width, int height, ref int[,] labels, int[,] borders)
+        {
+            for (int y = 0; y < height; y++)
+            {
+                for (int x = 0; x < width; x++)
+                {
+                    int basePoint = labels[x, y];
+
+                    if (borders[x, y] == 1 && basePoint != 0)
+                    {
+                        int curPoint = 0;
+
+                        if (x > 0)
+                        {
+                            curPoint = labels[x - 1, y];
+                            if (curPoint != 0 && curPoint != basePoint)
+                            {
+                                UniteColors(width, height, ref labels, basePoint, curPoint);
+                                continue;
+                            }
+                        }
+                        if (x > 0 && y > 0)
+                        {
+                            curPoint = labels[x - 1, y - 1];
+                            if (curPoint != 0 && curPoint != basePoint)
+                            {
+                                UniteColors(width, height, ref labels, basePoint, curPoint);
+                                continue;
+                            }
+                        }
+                        if (y > 0)
+                        {
+                            curPoint = labels[x, y - 1];
+                            if (curPoint != 0 && curPoint != basePoint)
+                            {
+                                UniteColors(width, height, ref labels, basePoint, curPoint);
+                                continue;
+                            }
+                        }
+                        if (x < width - 1 && y > 0)
+                        {
+                            curPoint = labels[x + 1, y - 1];
+                            if (curPoint != 0 && curPoint != basePoint)
+                            {
+                                UniteColors(width, height, ref labels, basePoint, curPoint);
+                                continue;
+                            }
+                        }
+                        if (x < width - 1)
+                        {
+                            curPoint = labels[x + 1, y];
+                            if (curPoint != 0 && curPoint != basePoint)
+                            {
+                                UniteColors(width, height, ref labels, basePoint, curPoint);
+                                continue;
+                            }
+                        }
+                        if (x < width - 1 && y < height - 1)
+                        {
+                            curPoint = labels[x + 1, y + 1];
+                            if (curPoint != 0 && curPoint != basePoint)
+                            {
+                                UniteColors(width, height, ref labels, basePoint, curPoint);
+                                continue;
+                            }
+                        }
+                        if (y < height - 1)
+                        {
+                            if (labels[x, y + 1] != 0 && labels[x, y + 1] != basePoint)
+                            {
+                                UniteColors(width, height, ref labels, basePoint, curPoint);
+                                continue;
+                            }
+                        }
+                        if (x > 0 && y < height - 1)
+                        {
+                            curPoint = labels[x - 1, y + 1];
+                            if (curPoint != 0 && curPoint != basePoint)
+                            {
+                                UniteColors(width, height, ref labels, basePoint, curPoint);
+                                continue;
+                            }
+                        }
+                    }
                 }
             }
 
             var hashSet = new HashSet<int>();
 
-            for (int y = 0; y < (int)sourceBitmap.Height; y++)
+            for (int y = 0; y < height; y++)
             {
-                for (int x = 0; x < (int) sourceBitmap.Width; x++)
+                for (int x = 0; x < width; x++)
                 {
                     hashSet.Add(labels[x, y]);
                 }
@@ -133,15 +285,21 @@ namespace ImageHelper
                 }
             }
 
-            for (int y = 0; y < (int)sourceBitmap.Height; y++)
+            return colors;
+        }
+
+        private static void UniteColors(int width, int height, ref int [,] labels, int toChange, int changeBy)
+        {
+            for (int y = 0; y < height; y++)
             {
-                for (int x = 0; x < (int)sourceBitmap.Width; x++)
+                for (int x = 0; x < width; x++)
                 {
-                    bitmap.SetPixel(x, y, (new HSV(0, 0, colors[labels[x, y]])).ToColor());
+                    if (labels[x, y] == toChange)
+                    {
+                        labels[x, y] = changeBy;
+                    }
                 }
             }
-
-            return Bitmap2BitmapImage(bitmap);
         }
 
         private static int[,] GetPixelValueArray(Bitmap bitmap)
@@ -155,55 +313,6 @@ namespace ImageHelper
                 }
             }
             return pixels;
-        }
-
-        private static void Fill(Bitmap bitmap, int[,] pixels, ref int[,] labels, int x, int y, int L)
-        {
-            _counter++;
-            if (_counter < 6500)
-            {
-                if ((labels[x, y] == 0) && pixels[x, y] == 0)
-                {
-                    labels[x, y] = L;
-                    if (x > 0)
-                    {
-                        Fill(bitmap, pixels, ref labels, x - 1, y, L);
-                    }
-                    if (x > 0 && y > 0)
-                    {
-                        Fill(bitmap, pixels, ref labels, x - 1, y - 1, L);
-                    }
-                    if (y > 0)
-                    {
-                        Fill(bitmap, pixels, ref labels, x, y - 1, L);
-                    }
-                    if (x < bitmap.Width - 1 && y > 0)
-                    {
-                        Fill(bitmap, pixels, ref labels, x + 1, y - 1, L);
-                    }
-                    if (x < bitmap.Width - 1)
-                    {
-                        Fill(bitmap, pixels, ref labels, x + 1, y, L);
-                    }
-                    if (x < bitmap.Width - 1 && y < bitmap.Height - 1)
-                    {
-                        Fill(bitmap, pixels, ref labels, x + 1, y + 1, L);
-                    }
-                    if (y < bitmap.Height - 1)
-                    {
-                        Fill(bitmap, pixels, ref labels, x, y + 1, L);
-                    }
-                    if (x > 0 && y < bitmap.Height - 1)
-                    {
-                        Fill(bitmap, pixels, ref labels, x - 1, y + 1, L);
-                    }
-                }
-            }
-            else
-            {
-                _borders[x, y] = 1;
-            }
-            _counter--;
         }
     }
 }
