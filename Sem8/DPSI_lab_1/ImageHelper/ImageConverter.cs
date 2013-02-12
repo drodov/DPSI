@@ -9,6 +9,11 @@ namespace ImageHelper
 {
     public static class ImageConverter
     {
+
+        private static int _counter = 0;
+
+        private static int[,] _borders;
+
         public static Bitmap BitmapImage2Bitmap(BitmapImage bitmapImage)
         {
             Bitmap bitmap;
@@ -93,6 +98,8 @@ namespace ImageHelper
 
             int[,] pixels = GetPixelValueArray(bitmap);
 
+            _borders = new int[bitmap.Width, bitmap.Height];
+
             var labels = new int[bitmap.Width, bitmap.Height];
             int L = 1; // labels должна быть обнулена
             for (int y = 0; y < (int)bitmap.Height; y++)
@@ -150,32 +157,53 @@ namespace ImageHelper
             return pixels;
         }
 
-        private static int counter = 0;
-
         private static void Fill(Bitmap bitmap, int[,] pixels, ref int[,] labels, int x, int y, int L)
         {
-            counter++;
-            if ((labels[x, y] == 0) && pixels[x, y] == 0 && counter < 6445)
+            _counter++;
+            if (_counter < 6500)
             {
-                labels[x, y] = L;
-                if (x > 0)
+                if ((labels[x, y] == 0) && pixels[x, y] == 0)
                 {
-                    Fill(bitmap, pixels, ref labels, x - 1, y, L);
-                }
-                if (x < bitmap.Width - 1)
-                {
-                    Fill(bitmap, pixels, ref labels, x + 1, y, L);
-                }
-                if (y > 0)
-                {
-                    Fill(bitmap, pixels, ref labels, x, y - 1, L);
-                }
-                if (y < bitmap.Height - 1)
-                {
-                    Fill(bitmap, pixels, ref labels, x, y + 1, L);
+                    labels[x, y] = L;
+                    if (x > 0)
+                    {
+                        Fill(bitmap, pixels, ref labels, x - 1, y, L);
+                    }
+                    if (x > 0 && y > 0)
+                    {
+                        Fill(bitmap, pixels, ref labels, x - 1, y - 1, L);
+                    }
+                    if (y > 0)
+                    {
+                        Fill(bitmap, pixels, ref labels, x, y - 1, L);
+                    }
+                    if (x < bitmap.Width - 1 && y > 0)
+                    {
+                        Fill(bitmap, pixels, ref labels, x + 1, y - 1, L);
+                    }
+                    if (x < bitmap.Width - 1)
+                    {
+                        Fill(bitmap, pixels, ref labels, x + 1, y, L);
+                    }
+                    if (x < bitmap.Width - 1 && y < bitmap.Height - 1)
+                    {
+                        Fill(bitmap, pixels, ref labels, x + 1, y + 1, L);
+                    }
+                    if (y < bitmap.Height - 1)
+                    {
+                        Fill(bitmap, pixels, ref labels, x, y + 1, L);
+                    }
+                    if (x > 0 && y < bitmap.Height - 1)
+                    {
+                        Fill(bitmap, pixels, ref labels, x - 1, y + 1, L);
+                    }
                 }
             }
-            counter--;
+            else
+            {
+                _borders[x, y] = 1;
+            }
+            _counter--;
         }
     }
 }
