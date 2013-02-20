@@ -1,0 +1,5 @@
+2013/02/20-23:29:20.054 fe8 Recovering log #70
+2013/02/20-23:29:20.054 fe8 Level-0 table #73: started
+2013/02/20-23:29:20.096 fe8 Level-0 table #73: 863 bytes OK
+2013/02/20-23:29:20.153 fe8 Delete type=0 #70
+2013/02/20-23:29:20.154 fe8 Delete type=3 #68

@@ -1,0 +1,12 @@
+﻿<Window x:Class="DPSI_lab_1.SetTresholdWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="SetTresholdWindow" Height="300" Width="300">
+    <Grid>
+        <StackPanel  Margin="30, 60" >
+            <CheckBox Name="AutoTreshhold" Content="Auto Treshhold" HorizontalAlignment="Right" VerticalAlignment="Top" IsChecked="True" Margin="0,0,134,0" Click="AutoTreshhold_Click" />
+            <TextBox Name="TreshholdTextBox" Height="23" TextWrapping="Wrap" Margin="0, 60" Text="" IsEnabled="False"/>
+        </StackPanel>
+        <Button Width="100"  HorizontalAlignment="Right" VerticalAlignment="Bottom" Content="OK" Margin="30,30" Click="Button_Click_1"/>
+    </Grid>
+</Window>

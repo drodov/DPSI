@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DPSI_lab_1", "DPSI_lab_1\DPSI_lab_1.csproj", "{F2D58A7B-C998-4229-980A-D8B09A179825}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImageHelper", "ImageHelper\ImageHelper.csproj", "{C5DD7611-89C6-4B8B-A204-E7DE99FAC64C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F2D58A7B-C998-4229-980A-D8B09A179825}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F2D58A7B-C998-4229-980A-D8B09A179825}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F2D58A7B-C998-4229-980A-D8B09A179825}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F2D58A7B-C998-4229-980A-D8B09A179825}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C5DD7611-89C6-4B8B-A204-E7DE99FAC64C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C5DD7611-89C6-4B8B-A204-E7DE99FAC64C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C5DD7611-89C6-4B8B-A204-E7DE99FAC64C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C5DD7611-89C6-4B8B-A204-E7DE99FAC64C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

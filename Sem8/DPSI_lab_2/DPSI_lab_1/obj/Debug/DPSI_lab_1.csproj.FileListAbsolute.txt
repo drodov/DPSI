@@ -1,0 +1,21 @@
+c:\users\dmitry\documents\visual studio 2012\Projects\DPSI_lab_1\DPSI_lab_1\bin\Debug\DPSI_lab_1.exe.config
+C:\Users\Dmitry\Documents\GitHub\DPSI\Sem8\DPSI_lab_1\DPSI_lab_1\bin\Debug\DPSI_lab_1.exe.config
+C:\Users\Dmitry\Documents\GitHub\DPSI\Sem8\DPSI_lab_1\DPSI_lab_1\bin\Debug\DPSI_lab_1.exe
+C:\Users\Dmitry\Documents\GitHub\DPSI\Sem8\DPSI_lab_1\DPSI_lab_1\bin\Debug\DPSI_lab_1.pdb
+C:\Users\Dmitry\Documents\GitHub\DPSI\Sem8\DPSI_lab_1\DPSI_lab_1\obj\Debug\DPSI_lab_1.csprojResolveAssemblyReference.cache
+C:\Users\Dmitry\Documents\GitHub\DPSI\Sem8\DPSI_lab_1\DPSI_lab_1\obj\Debug\MainWindow.baml
+C:\Users\Dmitry\Documents\GitHub\DPSI\Sem8\DPSI_lab_1\DPSI_lab_1\obj\Debug\MainWindow.g.cs
+C:\Users\Dmitry\Documents\GitHub\DPSI\Sem8\DPSI_lab_1\DPSI_lab_1\obj\Debug\App.g.cs
+C:\Users\Dmitry\Documents\GitHub\DPSI\Sem8\DPSI_lab_1\DPSI_lab_1\obj\Debug\DPSI_lab_1_MarkupCompile.cache
+C:\Users\Dmitry\Documents\GitHub\DPSI\Sem8\DPSI_lab_1\DPSI_lab_1\obj\Debug\DPSI_lab_1.g.resources
+C:\Users\Dmitry\Documents\GitHub\DPSI\Sem8\DPSI_lab_1\DPSI_lab_1\obj\Debug\DPSI_lab_1.Properties.Resources.resources
+C:\Users\Dmitry\Documents\GitHub\DPSI\Sem8\DPSI_lab_1\DPSI_lab_1\obj\Debug\DPSI_lab_1.csproj.GenerateResource.Cache
+C:\Users\Dmitry\Documents\GitHub\DPSI\Sem8\DPSI_lab_1\DPSI_lab_1\obj\Debug\DPSI_lab_1.exe
+C:\Users\Dmitry\Documents\GitHub\DPSI\Sem8\DPSI_lab_1\DPSI_lab_1\obj\Debug\DPSI_lab_1.pdb
+C:\Users\Dmitry\Documents\GitHub\DPSI\Sem8\DPSI_lab_1\DPSI_lab_1\bin\Debug\ImageHelper.dll
+C:\Users\Dmitry\Documents\GitHub\DPSI\Sem8\DPSI_lab_1\DPSI_lab_1\bin\Debug\ImageHelper.pdb
+C:\Users\Dmitry\Documents\GitHub\DPSI\Sem8\DPSI_lab_1\DPSI_lab_1\obj\Debug\SetTresholdWindow.baml
+C:\Users\Dmitry\Documents\GitHub\DPSI\Sem8\DPSI_lab_1\DPSI_lab_1\obj\Debug\SetTresholdWindow.g.cs
+C:\Users\Dmitry\Documents\GitHub\DPSI\Sem8\DPSI_lab_2\DPSI_lab_1\bin\Debug\DPSI_lab_1.exe.config
+C:\Users\Dmitry\Documents\GitHub\DPSI\Sem8\DPSI_lab_2\DPSI_lab_1\obj\Debug\DPSI_lab_1.exe
+C:\Users\Dmitry\Documents\GitHub\DPSI\Sem8\DPSI_lab_2\DPSI_lab_1\obj\Debug\DPSI_lab_1.pdb

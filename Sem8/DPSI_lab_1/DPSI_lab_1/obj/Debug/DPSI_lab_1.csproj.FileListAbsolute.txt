@@ -14,3 +14,5 @@ C:\Users\Dmitry\Documents\GitHub\DPSI\Sem8\DPSI_lab_1\DPSI_lab_1\obj\Debug\DPSI_
 C:\Users\Dmitry\Documents\GitHub\DPSI\Sem8\DPSI_lab_1\DPSI_lab_1\obj\Debug\DPSI_lab_1.pdb
 C:\Users\Dmitry\Documents\GitHub\DPSI\Sem8\DPSI_lab_1\DPSI_lab_1\bin\Debug\ImageHelper.dll
 C:\Users\Dmitry\Documents\GitHub\DPSI\Sem8\DPSI_lab_1\DPSI_lab_1\bin\Debug\ImageHelper.pdb
+C:\Users\Dmitry\Documents\GitHub\DPSI\Sem8\DPSI_lab_1\DPSI_lab_1\obj\Debug\SetTresholdWindow.baml
+C:\Users\Dmitry\Documents\GitHub\DPSI\Sem8\DPSI_lab_1\DPSI_lab_1\obj\Debug\SetTresholdWindow.g.cs
