@@ -1,5 +1,0 @@
-C:\Users\Dmitry\Documents\GitHub\DPSI\Sem8\DPSI_lab_1\ImageHelper\bin\Debug\ImageHelper.dll
-C:\Users\Dmitry\Documents\GitHub\DPSI\Sem8\DPSI_lab_1\ImageHelper\bin\Debug\ImageHelper.pdb
-C:\Users\Dmitry\Documents\GitHub\DPSI\Sem8\DPSI_lab_1\ImageHelper\obj\Debug\ImageHelper.csprojResolveAssemblyReference.cache
-C:\Users\Dmitry\Documents\GitHub\DPSI\Sem8\DPSI_lab_1\ImageHelper\obj\Debug\ImageHelper.dll
-C:\Users\Dmitry\Documents\GitHub\DPSI\Sem8\DPSI_lab_1\ImageHelper\obj\Debug\ImageHelper.pdb
