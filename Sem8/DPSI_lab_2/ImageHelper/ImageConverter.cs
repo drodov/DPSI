@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
@@ -9,9 +10,6 @@ namespace ImageHelper
 {
     public class ImageConverter
     {
-        private Dictionary<int, int> _square;
-        private Dictionary<int, double> _xCenter;
-        private Dictionary<int, double> _yCenter;
         private int _counter = 0;
         private readonly int _height;
         private readonly int _width;
@@ -20,6 +18,16 @@ namespace ImageHelper
         private readonly int[,] _labels;
         private readonly int[,] _borders;
         private readonly bool _needCalculateTreshold = true;
+        private HashSet<int> _colorsHashSet;
+        private readonly Dictionary<int, int> _square;
+        private Dictionary<int, double> _xCenter;
+        private Dictionary<int, double> _yCenter;
+        private Dictionary<int, int> _perimeter = new Dictionary<int, int>();
+        private readonly Dictionary<int, double> _compactness = new Dictionary<int, double>();
+        private readonly Dictionary<int, double> _elongation = new Dictionary<int, double>();
+        private readonly Dictionary<int, double> _m02 = new Dictionary<int, double>();
+        private readonly Dictionary<int, double> _m11 = new Dictionary<int, double>();
+        private readonly Dictionary<int, double> _m20 = new Dictionary<int, double>();
 
         public BitmapImage SourceImage { get; private set; }
         public BitmapImage GreyImage { get; private set; }
@@ -52,6 +60,12 @@ namespace ImageHelper
             GreyImage = GetGreyImage();
             BinaryImage = GetBinaryImage();
             RecognizedImage = GetRecognizedImage();
+
+            _square = GetSquare();
+            CalculateMassCenters();
+            CalculatePerimeter();
+            CalculateCompactness();
+            CalculateOblongness();
         }
 
         public Bitmap BitmapImage2Bitmap(BitmapImage bitmapImage)
@@ -218,7 +232,6 @@ namespace ImageHelper
 
         private Dictionary<int, byte> GetColors()
         {
-
             var hashSet1 = new HashSet<int>();
 
             for (int y = 0; y < _height; y++)
@@ -314,21 +327,21 @@ namespace ImageHelper
                 }
             }
 
-            var hashSet = new HashSet<int>();
+            _colorsHashSet = new HashSet<int>();
 
             for (int y = 0; y < _height; y++)
             {
                 for (int x = 0; x < _width; x++)
                 {
-                    hashSet.Add(_labels[x, y]);
+                    _colorsHashSet.Add(_labels[x, y]);
                 }
             }
 
             var colors = new Dictionary<int, byte>();
             byte curColor = 30;
-            for (int i = 0; i < hashSet.Count; i++)
+            for (int i = 0; i < _colorsHashSet.Count; i++)
             {
-                int hashElement = hashSet.ElementAt(i);
+                int hashElement = _colorsHashSet.ElementAt(i);
                 colors.Add(hashElement, (hashElement == 0) ? (byte)255 : curColor);
                 curColor += 20;
                 if (curColor > 230)
@@ -393,12 +406,12 @@ namespace ImageHelper
             return pixels;
         }
 
-        private Dictionary<int, int> GetSquare(int width, int heights)
+        private Dictionary<int, int> GetSquare()
         {
             var square = new Dictionary<int, int>();
-            for (int y = 0; y < heights; y++)
+            for (int y = 0; y < _height; y++)
             {
-                for (int x = 0; x < width; x++)
+                for (int x = 0; x < _width; x++)
                 {
                     if (square.ContainsKey(_labels[x, y]))
                     {
@@ -414,43 +427,158 @@ namespace ImageHelper
             return square;
         }
 
-        private void CalculateMassCenters(int width, int heights)
+        private void CalculateMassCenters()
         {
             _xCenter = new Dictionary<int, double>();
             _yCenter = new Dictionary<int, double>();
 
-            var hashSet = new HashSet<int>();
-
-            for (int y = 0; y < heights; y++)
+            foreach (var color in _colorsHashSet)
             {
-                for (int x = 0; x < width; x++)
-                {
-                    hashSet.Add(_labels[x, y]);
-                }
+                _xCenter.Add(color, 0);
+                _yCenter.Add(color, 0);
             }
 
-            foreach (var i in hashSet)
+            for (int y = 0; y < _height; y++)
             {
-                _xCenter.Add(i, 0);
-                _yCenter.Add(i, 0);
-            }
-
-            for (int y = 0; y < heights; y++)
-            {
-                for (int x = 0; x < width; x++)
+                for (int x = 0; x < _width; x++)
                 {
                     _xCenter[_labels[x, y]] += x;
                     _yCenter[_labels[x, y]] += y;
                 }
             }
 
-            IEnumerable<int> keys = _xCenter.Keys.ToArray();
-            foreach (var key in keys)
+            foreach (var color in _colorsHashSet)
             {
-                _xCenter[key] /= _square[key];
-                _yCenter[key] /= _square[key];
+                _xCenter[color] /= _square[color];
+                _yCenter[color] /= _square[color];
+            }
+        }
+
+        private void CalculatePerimeter()
+        {
+            _perimeter = new Dictionary<int, int>();
+            foreach (var color in _colorsHashSet)
+            {
+                _perimeter.Add(color, 0);
             }
 
+            for(int y = 0; y < _height; y++)
+            {
+                for(int x = 0; x < _width; x++)
+                {
+                    if(IsBinary(x, y))
+                    {
+                        _perimeter[_labels[x, y]]++;
+                    }
+                }
+            }
+        }
+
+        private bool IsBinary(int x, int y)
+        {
+            int curColor = _labels[x, y];
+            if (x > 0)
+            {
+                if (curColor != _labels[x - 1, y])
+                {
+                    return true;
+                }
+            }
+            if (x > 0 && y > 0)
+            {
+               if (curColor != _labels[x - 1, y - 1])
+               {
+                   return true;
+               }
+            }
+            if (y > 0)
+            {
+                if (curColor != _labels[x, y - 1])
+                {
+                    return true;
+                }
+            }
+            if (x < _width - 1 && y > 0)
+            {
+                if (curColor != _labels[x + 1, y - 1])
+                {
+                    return true;
+                }
+            }
+            if (x < _width - 1)
+            {
+                if(curColor != _labels[x + 1, y])
+                {
+                    return true;
+                }
+            }
+            if (x < _width - 1 && y < _height - 1)
+            {
+                if (curColor != _labels[x + 1, y + 1])
+                {
+                    return true;
+                }
+            }
+            if (y < _height - 1)
+            {
+                if (curColor != _labels[x, y + 1])
+                {
+                    return true;
+                }
+            }
+            if (x > 0 && y < _height - 1)
+            {
+                if (curColor != _labels[x - 1, y + 1])
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
+        private void CalculateCompactness()
+        {
+            foreach (var color in _colorsHashSet)
+            {
+                _compactness.Add(color, _square[color] == 0 ? 0 : _perimeter[color] * _perimeter[color] / _square[color]);
+            }
+        }
+
+        private void CalculateOblongness()
+        {
+            foreach (var color in _colorsHashSet)
+            {
+                _m02.Add(color, 0);
+                _m11.Add(color, 0);
+                _m20.Add(color, 0);
+            }
+
+            for(int y = 0; y < _height; y++)
+            {
+                for(int x  = 0; x < _width; x++)
+                {
+                    int curColor = _labels[x, y];
+                    double dX = x - _xCenter[curColor];
+                    double dY = y - _yCenter[curColor];
+
+                    _m02[curColor] += CalculateDiscretCenterMoment(dX, dY, 0, 2);
+                    _m11[curColor] += CalculateDiscretCenterMoment(dX, dY, 1, 1);
+                    _m20[curColor] += CalculateDiscretCenterMoment(dX, dY, 2, 0);
+                }
+            }
+
+            foreach (var color in _colorsHashSet)
+            {
+                double val1 = _m20[color] + _m02[color];
+                double val2 = Math.Sqrt((_m20[color] - _m02[color]) * (_m20[color] - _m02[color]) + 4 * _m11[color] * _m11[color]);
+                _elongation.Add(color, (val1 + val2)/(val1 - val2));
+            }
+        }
+
+        private double CalculateDiscretCenterMoment(double dX, double dY, int i, int j)
+        {
+            return Math.Pow(dX, i) * Math.Pow(dY, j);
         }
     }
 }
