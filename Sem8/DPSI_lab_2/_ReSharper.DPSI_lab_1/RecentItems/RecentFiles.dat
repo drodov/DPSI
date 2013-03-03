@@ -1,22 +1,24 @@
 ﻿<RecentFiles>
   <RecentFiles>
     <File id="C5DD7611-89C6-4B8B-A204-E7DE99FAC64C/f:RGB.cs" caret="63" fromTop="4" />
-    <File id="C5DD7611-89C6-4B8B-A204-E7DE99FAC64C/f:HSV.cs" caret="693" fromTop="15" />
-    <File id="F2D58A7B-C998-4229-980A-D8B09A179825/f:Treshold.cs" caret="241" fromTop="13" />
-    <File id="F2D58A7B-C998-4229-980A-D8B09A179825/f:SetTresholdWindow.xaml" caret="437" fromTop="5" />
-    <File id="F2D58A7B-C998-4229-980A-D8B09A179825/f:SetTresholdWindow.xaml.cs" caret="622" fromTop="21" />
-    <File id="F2D58A7B-C998-4229-980A-D8B09A179825/f:MainWindow.xaml" caret="451" fromTop="7" />
-    <File id="F2D58A7B-C998-4229-980A-D8B09A179825/f:MainWindow.xaml.cs" caret="2385" fromTop="11" />
-    <File id="C5DD7611-89C6-4B8B-A204-E7DE99FAC64C/f:ImageConverter.cs" caret="16352" fromTop="17" />
+    <File id="C5DD7611-89C6-4B8B-A204-E7DE99FAC64C/f:Vector.cs" caret="399" fromTop="12" />
+    <File id="C5DD7611-89C6-4B8B-A204-E7DE99FAC64C/f:HSV.cs" caret="1100" fromTop="20" />
+    <File id="F2D58A7B-C998-4229-980A-D8B09A179825/f:MainWindow.xaml" caret="433" fromTop="7" />
+    <File id="F2D58A7B-C998-4229-980A-D8B09A179825/f:Settings.cs" caret="0" fromTop="0" />
+    <File id="F2D58A7B-C998-4229-980A-D8B09A179825/f:SettingsWindow.xaml" caret="439" fromTop="6" />
+    <File id="F2D58A7B-C998-4229-980A-D8B09A179825/f:SettingsWindow.xaml.cs" caret="1265" fromTop="13" />
+    <File id="F2D58A7B-C998-4229-980A-D8B09A179825/f:MainWindow.xaml.cs" caret="2573" fromTop="21" />
+    <File id="C5DD7611-89C6-4B8B-A204-E7DE99FAC64C/f:ImageConverter.cs" caret="8378" fromTop="29" />
   </RecentFiles>
   <RecentEdits>
     <File id="C5DD7611-89C6-4B8B-A204-E7DE99FAC64C/f:RGB.cs" caret="638" fromTop="16" />
     <File id="C5DD7611-89C6-4B8B-A204-E7DE99FAC64C/f:HSV.cs" caret="1129" fromTop="15" />
-    <File id="F2D58A7B-C998-4229-980A-D8B09A179825/f:MainWindow.xaml" caret="451" fromTop="7" />
-    <File id="F2D58A7B-C998-4229-980A-D8B09A179825/f:SetTresholdWindow.xaml" caret="437" fromTop="5" />
-    <File id="F2D58A7B-C998-4229-980A-D8B09A179825/f:Treshold.cs" caret="215" fromTop="10" />
-    <File id="F2D58A7B-C998-4229-980A-D8B09A179825/f:MainWindow.xaml.cs" caret="1694" fromTop="13" />
-    <File id="F2D58A7B-C998-4229-980A-D8B09A179825/f:SetTresholdWindow.xaml.cs" caret="563" fromTop="15" />
-    <File id="C5DD7611-89C6-4B8B-A204-E7DE99FAC64C/f:ImageConverter.cs" caret="18212" fromTop="13" />
+    <File id="C5DD7611-89C6-4B8B-A204-E7DE99FAC64C/f:Vector.cs" caret="399" fromTop="12" />
+    <File id="F2D58A7B-C998-4229-980A-D8B09A179825/f:MainWindow.xaml" caret="433" fromTop="7" />
+    <File id="F2D58A7B-C998-4229-980A-D8B09A179825/f:Settings.cs" caret="0" fromTop="0" />
+    <File id="F2D58A7B-C998-4229-980A-D8B09A179825/f:SettingsWindow.xaml.cs" caret="1708" fromTop="26" />
+    <File id="F2D58A7B-C998-4229-980A-D8B09A179825/f:SettingsWindow.xaml" caret="439" fromTop="6" />
+    <File id="F2D58A7B-C998-4229-980A-D8B09A179825/f:MainWindow.xaml.cs" caret="2509" fromTop="20" />
+    <File id="C5DD7611-89C6-4B8B-A204-E7DE99FAC64C/f:ImageConverter.cs" caret="7886" fromTop="18" />
   </RecentEdits>
 </RecentFiles>

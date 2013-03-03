@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading;
 using System.Windows;
 using System.Windows.Media.Imaging;
 using ImageHelper;
@@ -16,7 +17,13 @@ namespace DPSI_lab_1
         private BitmapImage _greyImage;
         private BitmapImage _binaryImage;
         private BitmapImage _recognizedImage;
-        private Treshold _treshold = new Treshold();
+
+        private readonly Settings _settings = new Settings
+            {
+                Inversion = true,
+                K = 2,
+                TresholdValue = 200
+            };
 
         public MainWindow()
         {
@@ -49,8 +56,7 @@ namespace DPSI_lab_1
 
         private void SetTreshold(object sender, RoutedEventArgs e)
         {
-            _treshold.TresholdValue = null;
-            var setTresholdWindow = new SetTresholdWindow(_treshold);
+            var setTresholdWindow = new SettingsWindow(_settings);
             setTresholdWindow.ShowDialog();
             RunImageProcessing();
         }
@@ -59,7 +65,7 @@ namespace DPSI_lab_1
         {
             try
             {
-                _imageConverter = new ImageConverter(_sourceImage, _treshold.TresholdValue);
+                _imageConverter = new ImageConverter(_sourceImage, _settings.TresholdValue, _settings.K, _settings.Inversion);
 
                 _greyImage = _imageConverter.GreyImage;
                 GreyImage.Source = _greyImage;
@@ -69,6 +75,8 @@ namespace DPSI_lab_1
 
                 _recognizedImage = _imageConverter.RecognizedImage;
                 RecognizedImage.Source = _recognizedImage;
+                MessageBox.Show("OK!");
+                RecognizedImage.Source = _imageConverter.ClusteredImage;
             }
             catch (Exception ex)
             {

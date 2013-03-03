@@ -25,11 +25,11 @@ C:\Users\Dmitry\Documents\GitHub\DPSI\Sem8\DPSI_lab_2\DPSI_lab_1\bin\Debug\Image
 C:\Users\Dmitry\Documents\GitHub\DPSI\Sem8\DPSI_lab_2\DPSI_lab_1\bin\Debug\ImageHelper.pdb
 C:\Users\Dmitry\Documents\GitHub\DPSI\Sem8\DPSI_lab_2\DPSI_lab_1\obj\Debug\DPSI_lab_1.csprojResolveAssemblyReference.cache
 C:\Users\Dmitry\Documents\GitHub\DPSI\Sem8\DPSI_lab_2\DPSI_lab_1\obj\Debug\MainWindow.baml
-C:\Users\Dmitry\Documents\GitHub\DPSI\Sem8\DPSI_lab_2\DPSI_lab_1\obj\Debug\SetTresholdWindow.baml
 C:\Users\Dmitry\Documents\GitHub\DPSI\Sem8\DPSI_lab_2\DPSI_lab_1\obj\Debug\MainWindow.g.cs
-C:\Users\Dmitry\Documents\GitHub\DPSI\Sem8\DPSI_lab_2\DPSI_lab_1\obj\Debug\SetTresholdWindow.g.cs
 C:\Users\Dmitry\Documents\GitHub\DPSI\Sem8\DPSI_lab_2\DPSI_lab_1\obj\Debug\App.g.cs
 C:\Users\Dmitry\Documents\GitHub\DPSI\Sem8\DPSI_lab_2\DPSI_lab_1\obj\Debug\DPSI_lab_1_MarkupCompile.cache
 C:\Users\Dmitry\Documents\GitHub\DPSI\Sem8\DPSI_lab_2\DPSI_lab_1\obj\Debug\DPSI_lab_1.g.resources
 C:\Users\Dmitry\Documents\GitHub\DPSI\Sem8\DPSI_lab_2\DPSI_lab_1\obj\Debug\DPSI_lab_1.Properties.Resources.resources
 C:\Users\Dmitry\Documents\GitHub\DPSI\Sem8\DPSI_lab_2\DPSI_lab_1\obj\Debug\DPSI_lab_1.csproj.GenerateResource.Cache
+C:\Users\Dmitry\Documents\GitHub\DPSI\Sem8\DPSI_lab_2\DPSI_lab_1\obj\Debug\SettingsWindow.baml
+C:\Users\Dmitry\Documents\GitHub\DPSI\Sem8\DPSI_lab_2\DPSI_lab_1\obj\Debug\SettingsWindow.g.cs

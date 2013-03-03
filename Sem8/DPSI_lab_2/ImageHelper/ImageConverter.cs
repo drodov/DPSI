@@ -10,6 +10,8 @@ namespace ImageHelper
 {
     public class ImageConverter
     {
+        private readonly int K;
+        private readonly bool IsInverted;
         private int _counter = 0;
         private readonly int _height;
         private readonly int _width;
@@ -19,7 +21,8 @@ namespace ImageHelper
         private readonly int[,] _borders;
         private readonly bool _needCalculateTreshold = true;
         private HashSet<int> _colorsHashSet;
-        private readonly Dictionary<int, int> _square;
+
+        private Dictionary<int, int> _square;
         private Dictionary<int, double> _xCenter;
         private Dictionary<int, double> _yCenter;
         private Dictionary<int, int> _perimeter = new Dictionary<int, int>();
@@ -28,14 +31,37 @@ namespace ImageHelper
         private readonly Dictionary<int, double> _m02 = new Dictionary<int, double>();
         private readonly Dictionary<int, double> _m11 = new Dictionary<int, double>();
         private readonly Dictionary<int, double> _m20 = new Dictionary<int, double>();
+        
+        private readonly List<Vector> _vectors = new List<Vector>();
+        private readonly Dictionary<int, int> _vectorForObject = new Dictionary<int, int>(); 
 
         public BitmapImage SourceImage { get; private set; }
         public BitmapImage GreyImage { get; private set; }
         public BitmapImage BinaryImage { get; private set; }
         public BitmapImage RecognizedImage { get; private set; }
-
-        public ImageConverter(BitmapImage sourceImage, int? treshold)
+        public BitmapImage ClusteredImage
         {
+            get
+            {
+                foreach (var color in _colorsHashSet)
+                {
+                    _vectorForObject.Add(color, 0);
+                }
+
+                _square = GetSquare();
+                CalculateMassCenters();
+                CalculatePerimeter();
+                CalculateCompactness();
+                CalculateElongation();
+
+                return DefineObjects();
+            }
+        }
+
+        public ImageConverter(BitmapImage sourceImage, int? treshold, int k, bool isInverted)
+        {
+            K = k;
+            IsInverted = isInverted;
             SourceImage = sourceImage;
             _height = (int) sourceImage.Height;
             _width = (int) sourceImage.Width;
@@ -60,12 +86,130 @@ namespace ImageHelper
             GreyImage = GetGreyImage();
             BinaryImage = GetBinaryImage();
             RecognizedImage = GetRecognizedImage();
+        }
 
-            _square = GetSquare();
-            CalculateMassCenters();
-            CalculatePerimeter();
-            CalculateCompactness();
-            CalculateOblongness();
+        public BitmapImage DefineObjects()
+        {
+            var random = new Random();
+            int deltaColor = 200/(K - 1);
+            for (int i = 0; i < K; i++)
+            {
+                _vectors.Add(new Vector()
+                {
+                    Compactness = _compactness.Values.Min() + (_compactness.Values.Max() - _compactness.Values.Min()) / 100 * random.Next(0, 100),
+                    Elongation = _elongation.Values.Min() + (_elongation.Values.Max() - _elongation.Values.Min()) / 100 * random.Next(0, 100),
+                    Perimeter = _perimeter.Values.Min() + (_compactness.Values.Max() - _compactness.Values.Min()) / 100 * random.Next(0, 100),
+                    Square = _square.Values.Min() + (_compactness.Values.Max() - _compactness.Values.Min()) / 100 * random.Next(0, 100),
+                    XCenter = _xCenter.Values.Min() + (_xCenter.Values.Max() - _xCenter.Values.Min()) / 100 * random.Next(0, 100),
+                    YCenter = _yCenter.Values.Min() + (_yCenter.Values.Max() - _yCenter.Values.Min()) / 100 * random.Next(0, 100),
+                    Color = Color.FromArgb(20 + deltaColor * i, 100, 100)
+                });
+            }
+
+            bool flagWereChanges = true;
+
+            var vectorsCompactness = new Dictionary<int, List<double>>();
+            var vectorsElongation = new Dictionary<int, List<double>>();
+            var vectorsPerimeter = new Dictionary<int, List<double>>();
+            var vectorsSquare = new Dictionary<int, List<double>>();
+            var vectorsXCenter = new Dictionary<int, List<double>>();
+            var vectorsYCenter = new Dictionary<int, List<double>>();
+            for (int i = 0; i < K; i++)
+            {
+                vectorsCompactness.Add(i, new List<double>());
+                vectorsElongation.Add(i, new List<double>());
+                vectorsPerimeter.Add(i, new List<double>());
+                vectorsSquare.Add(i, new List<double>());
+                vectorsXCenter.Add(i, new List<double>());
+                vectorsYCenter.Add(i, new List<double>());
+            }
+
+            while (flagWereChanges)
+            {
+                foreach (var color in _colorsHashSet)
+                {
+                    if(color == 0)
+                    {
+                        continue;
+                    }
+
+                    var distanceForColor = new double[K];
+                    for(int i =  0; i < K; i++)
+                    {
+                        distanceForColor[i] = GetDistance(_vectors[i], color);
+                    }
+                    double minDistance = distanceForColor.Min();
+                    for(int i =  0; i < K; i++)
+                    {
+                        if(distanceForColor[i] == minDistance)
+                        {
+                            _vectorForObject[color] = i;
+
+                            vectorsCompactness[i].Add(_compactness[color]);
+                            vectorsElongation[i].Add(_elongation[color]);
+                            vectorsPerimeter[i].Add(_perimeter[color]);
+                            vectorsSquare[i].Add(_square[color]);
+                            vectorsXCenter[i].Add(_xCenter[color]);
+                            vectorsYCenter[i].Add(_yCenter[color]);
+                            break;
+                        }
+                    }
+                }
+
+                for (int i = 0; i < K; i++)
+                {
+                    double newCompactness = vectorsCompactness[i].Any() ? vectorsCompactness[i].Average() : 0;
+                    double newElongation = vectorsElongation[i].Any() ? vectorsElongation[i].Average() : 0;
+                    double newPerimeter = vectorsPerimeter[i].Any() ? vectorsPerimeter[i].Average() : 0;
+                    double newSquare = vectorsSquare[i].Any() ? vectorsSquare[i].Average() : 0;
+                    double newXCenter = vectorsXCenter[i].Any() ? vectorsXCenter[i].Average() : 0;
+                    double newYCenter = vectorsYCenter[i].Any() ? vectorsYCenter[i].Average() : 0;
+
+                    if (Math.Abs(_vectors[i].Compactness - newCompactness) > 0.05
+                        || Math.Abs(_vectors[i].Elongation - newElongation) > 0.05
+                        || Math.Abs(_vectors[i].Perimeter - newPerimeter) > 0.05
+                        || Math.Abs(_vectors[i].Square - newSquare) > 0.05
+                        || Math.Abs(_vectors[i].XCenter - newXCenter) > 0.05
+                        || Math.Abs(_vectors[i].YCenter - newYCenter) > 0.05)
+                    {
+                        _vectors[i].Compactness = newCompactness;
+                        _vectors[i].Elongation = newElongation;
+                        _vectors[i].Perimeter = newPerimeter;
+                        _vectors[i].Square = newSquare;
+                        _vectors[i].XCenter = newXCenter;
+                        _vectors[i].YCenter = newYCenter;
+                    }
+                    else
+                    {
+                        flagWereChanges = false;
+                    }
+                }
+            }
+            
+            Bitmap bitmap = BitmapImage2Bitmap(RecognizedImage);
+            for (int y = 0; y < _height; y++)
+            {
+                for (int x = 0; x < _width; x++)
+                {
+                    if (_labels[x, y] != 0)
+                    {
+                        bitmap.SetPixel(x, y, _vectors[_vectorForObject[_labels[x, y]]].Color);
+                    }
+                }
+            }
+            return Bitmap2BitmapImage(bitmap);
+        }
+
+        private double GetDistance(Vector vector, int color)
+        {
+            return Math.Sqrt(
+                (vector.Compactness - _compactness[color]) * (vector.Compactness - _compactness[color]) +
+                (vector.Elongation - _elongation[color]) * (vector.Elongation - _elongation[color]) +
+                (vector.Perimeter - _perimeter[color]) * (vector.Perimeter - _perimeter[color]) +
+                (vector.Square - _square[color]) * (vector.Square - _square[color]) +
+                (vector.XCenter - _xCenter[color]) * (vector.XCenter - _xCenter[color]) +
+                (vector.YCenter - _yCenter[color]) * (vector.YCenter - _yCenter[color])
+                );
         }
 
         public Bitmap BitmapImage2Bitmap(BitmapImage bitmapImage)
@@ -137,7 +281,9 @@ namespace ImageHelper
                 for (int x = 0; x < _width; x++)
                 {
                     var hsv = new HSV(pixelsArray[x, y]);
-                    pixelsArray[x, y] = (new HSV(0, 0, hsv.Value >= _treshold ? (byte) 255 : (byte) 0)).ToColor();
+                    pixelsArray[x, y] = (new HSV(0, 0, !IsInverted
+                                                       ? hsv.Value >= _treshold ? (byte) 255 : (byte) 0
+                                                       : hsv.Value >= _treshold ? (byte) 0 : (byte) 255)).ToColor();
                 }
             }
 
@@ -333,7 +479,7 @@ namespace ImageHelper
             {
                 for (int x = 0; x < _width; x++)
                 {
-                    _colorsHashSet.Add(_labels[x, y]);
+                    bool testFlag = _colorsHashSet.Add(_labels[x, y]);
                 }
             }
 
@@ -413,13 +559,18 @@ namespace ImageHelper
             {
                 for (int x = 0; x < _width; x++)
                 {
+                    if (_labels[x, y] == 0)
+                    {
+                        continue;
+                    }
+
                     if (square.ContainsKey(_labels[x, y]))
                     {
                         square[_labels[x, y]]++;
                     }
                     else
                     {
-                        square.Add(_labels[x, y], 0);
+                        square.Add(_labels[x, y], 1);
                     }
                 }
             }
@@ -434,23 +585,33 @@ namespace ImageHelper
 
             foreach (var color in _colorsHashSet)
             {
-                _xCenter.Add(color, 0);
-                _yCenter.Add(color, 0);
+                if (color != 0)
+                {
+                    _xCenter.Add(color, 0);
+                    _yCenter.Add(color, 0);
+                }
             }
 
             for (int y = 0; y < _height; y++)
             {
                 for (int x = 0; x < _width; x++)
                 {
-                    _xCenter[_labels[x, y]] += x;
-                    _yCenter[_labels[x, y]] += y;
+                    int curLabel = _labels[x, y];
+                    if (curLabel != 0)
+                    {
+                        _xCenter[_labels[x, y]] += x;
+                        _yCenter[_labels[x, y]] += y;
+                    }
                 }
             }
 
             foreach (var color in _colorsHashSet)
             {
-                _xCenter[color] /= _square[color];
-                _yCenter[color] /= _square[color];
+                if (color != 0)
+                {
+                    _xCenter[color] /= _square[color];
+                    _yCenter[color] /= _square[color];
+                }
             }
         }
 
@@ -459,22 +620,28 @@ namespace ImageHelper
             _perimeter = new Dictionary<int, int>();
             foreach (var color in _colorsHashSet)
             {
-                _perimeter.Add(color, 0);
+                if(color != 0)
+                {
+                    _perimeter.Add(color, 0);
+                }
             }
 
             for(int y = 0; y < _height; y++)
             {
                 for(int x = 0; x < _width; x++)
                 {
-                    if(IsBinary(x, y))
+                    if (_labels[x, y] != 0)
                     {
-                        _perimeter[_labels[x, y]]++;
+                        if (IsBoundary(x, y))
+                        {
+                            _perimeter[_labels[x, y]]++;
+                        }
                     }
                 }
             }
         }
 
-        private bool IsBinary(int x, int y)
+        private bool IsBoundary(int x, int y)
         {
             int curColor = _labels[x, y];
             if (x > 0)
@@ -541,17 +708,23 @@ namespace ImageHelper
         {
             foreach (var color in _colorsHashSet)
             {
-                _compactness.Add(color, _square[color] == 0 ? 0 : _perimeter[color] * _perimeter[color] / _square[color]);
+                if (color != 0)
+                {
+                    _compactness.Add(color, _square[color] == 0 ? 0 : _perimeter[color]*_perimeter[color]/_square[color]);
+                }
             }
         }
 
-        private void CalculateOblongness()
+        private void CalculateElongation()
         {
             foreach (var color in _colorsHashSet)
             {
-                _m02.Add(color, 0);
-                _m11.Add(color, 0);
-                _m20.Add(color, 0);
+                if (color != 0)
+                {
+                    _m02.Add(color, 0);
+                    _m11.Add(color, 0);
+                    _m20.Add(color, 0);
+                }
             }
 
             for(int y = 0; y < _height; y++)
@@ -559,20 +732,27 @@ namespace ImageHelper
                 for(int x  = 0; x < _width; x++)
                 {
                     int curColor = _labels[x, y];
-                    double dX = x - _xCenter[curColor];
-                    double dY = y - _yCenter[curColor];
+                    if (curColor != 0)
+                    {
+                        double dX = x - _xCenter[curColor];
+                        double dY = y - _yCenter[curColor];
 
-                    _m02[curColor] += CalculateDiscretCenterMoment(dX, dY, 0, 2);
-                    _m11[curColor] += CalculateDiscretCenterMoment(dX, dY, 1, 1);
-                    _m20[curColor] += CalculateDiscretCenterMoment(dX, dY, 2, 0);
+                        _m02[curColor] += CalculateDiscretCenterMoment(dX, dY, 0, 2);
+                        _m11[curColor] += CalculateDiscretCenterMoment(dX, dY, 1, 1);
+                        _m20[curColor] += CalculateDiscretCenterMoment(dX, dY, 2, 0);
+                    }
                 }
             }
 
             foreach (var color in _colorsHashSet)
             {
-                double val1 = _m20[color] + _m02[color];
-                double val2 = Math.Sqrt((_m20[color] - _m02[color]) * (_m20[color] - _m02[color]) + 4 * _m11[color] * _m11[color]);
-                _elongation.Add(color, (val1 + val2)/(val1 - val2));
+                if (color != 0)
+                {
+                    double val1 = _m20[color] + _m02[color];
+                    double val2 =
+                        Math.Sqrt((_m20[color] - _m02[color])*(_m20[color] - _m02[color]) + 4*_m11[color]*_m11[color]);
+                    _elongation.Add(color, val1 - val2 != 0 ? (val1 + val2) / (val1 - val2) : 0);
+                }
             }
         }
 

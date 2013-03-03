@@ -5,7 +5,7 @@
     <Grid>
         <Menu Height="25" VerticalAlignment="Top" HorizontalAlignment="Stretch">
             <MenuItem Header="Open File" Click="OpenFileClick" />
-            <MenuItem Header="Set Teshhold" Click="SetTreshold" />
+            <MenuItem Header="Settings" Click="SetTreshold" />
         </Menu>
         <Grid Margin="0,25,0,0" ShowGridLines="True">
             <Grid.RowDefinitions>
