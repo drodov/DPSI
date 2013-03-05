@@ -165,12 +165,12 @@ namespace ImageHelper
                     double newXCenter = vectorsXCenter[i].Any() ? vectorsXCenter[i].Average() : 0;
                     double newYCenter = vectorsYCenter[i].Any() ? vectorsYCenter[i].Average() : 0;
 
-                    if (Math.Abs(_vectors[i].Compactness - newCompactness) > 0.05
-                        || Math.Abs(_vectors[i].Elongation - newElongation) > 0.05
-                        || Math.Abs(_vectors[i].Perimeter - newPerimeter) > 0.05
-                        || Math.Abs(_vectors[i].Square - newSquare) > 0.05
-                        || Math.Abs(_vectors[i].XCenter - newXCenter) > 0.05
-                        || Math.Abs(_vectors[i].YCenter - newYCenter) > 0.05)
+                    if (Math.Abs(_vectors[i].Compactness - newCompactness) > 0.005
+                        || Math.Abs(_vectors[i].Elongation - newElongation) > 0.005
+                        || Math.Abs(_vectors[i].Perimeter - newPerimeter) > 0.005
+                        || Math.Abs(_vectors[i].Square - newSquare) > 0.005
+                        || Math.Abs(_vectors[i].XCenter - newXCenter) > 0.005
+                        || Math.Abs(_vectors[i].YCenter - newYCenter) > 0.005)
                     {
                         _vectors[i].Compactness = newCompactness;
                         _vectors[i].Elongation = newElongation;
@@ -245,16 +245,27 @@ namespace ImageHelper
         {
             Bitmap bitmap = BitmapImage2Bitmap(SourceImage);
 
-            for (int i = 0; i < _height; i++)
+            int[,] pixels = GetPixelValuesArray(bitmap);
+
+            for (int y = 1; y < _height - 1; y++)
             {
-                for (int j = 0; j < _width; j++)
+                for (int x = 1; x < _width - 1; x++)
                 {
-                    var hsv = new HSV(bitmap.GetPixel(j, i));
-                    bitmap.SetPixel(j, i, (new HSV(0, 0, hsv.Value)).ToColor());
+                    pixels[x, y] = (pixels[x - 1, y - 1] + pixels[x, y - 1] + pixels[x + 1, y - 1] + pixels[x - 1, y] + pixels[x, y] +
+                                    pixels[x + 1, y] + pixels[x - 1, y + 1] + pixels[x, y + 1] + pixels[x + 1, y + 1]) / 9;
                 }
             }
 
-            return Bitmap2BitmapImage(bitmap);
+            var pixelsArray = new Color[_width, _height];
+            for (int y = 1; y < _height - 1; y++)
+            {
+                for (int x = 1; x < _width - 1; x++)
+                {
+                    pixelsArray[x, y] = (new HSV(0,0, (byte)pixels[x,y])).ToColor();
+                }
+            }
+
+            return Bitmap2BitmapImage(GetBitmapFromPixelsArray(pixelsArray));
         }
 
         private BitmapImage GetBinaryImage()
