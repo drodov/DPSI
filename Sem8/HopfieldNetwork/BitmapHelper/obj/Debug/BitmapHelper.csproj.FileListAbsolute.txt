@@ -1,0 +1,5 @@
+c:\users\dmitry\documents\visual studio 2012\Projects\HopfieldNetwork\BitmapHelper\bin\Debug\BitmapHelper.dll
+c:\users\dmitry\documents\visual studio 2012\Projects\HopfieldNetwork\BitmapHelper\bin\Debug\BitmapHelper.pdb
+c:\users\dmitry\documents\visual studio 2012\Projects\HopfieldNetwork\BitmapHelper\obj\Debug\BitmapHelper.csprojResolveAssemblyReference.cache
+c:\users\dmitry\documents\visual studio 2012\Projects\HopfieldNetwork\BitmapHelper\obj\Debug\BitmapHelper.dll
+c:\users\dmitry\documents\visual studio 2012\Projects\HopfieldNetwork\BitmapHelper\obj\Debug\BitmapHelper.pdb

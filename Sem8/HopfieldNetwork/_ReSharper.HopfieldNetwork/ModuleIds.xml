@@ -1,0 +1,5 @@
+<Modules>
+  <Module PersistentId="97C05773-5F4A-4160-ACBB-E396BCD262D2" ModuleId="HopfieldNetwork" />
+  <Module PersistentId="D16E7BEB-EA3D-403C-A8BD-8B82644559F9" ModuleId="ClassLibrary1" />
+  <Module PersistentId="75FE3666-AF40-4DE6-9E77-59A1D6DF323C" ModuleId="BitmapHelper" />
+</Modules>

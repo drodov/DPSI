@@ -1,0 +1,15 @@
+c:\users\dmitry\documents\visual studio 2012\Projects\HopfieldNetwork\HopfieldNetwork\bin\Debug\HopfieldNetwork.exe.config
+c:\users\dmitry\documents\visual studio 2012\Projects\HopfieldNetwork\HopfieldNetwork\bin\Debug\HopfieldNetwork.exe
+c:\users\dmitry\documents\visual studio 2012\Projects\HopfieldNetwork\HopfieldNetwork\bin\Debug\HopfieldNetwork.pdb
+c:\users\dmitry\documents\visual studio 2012\Projects\HopfieldNetwork\HopfieldNetwork\obj\Debug\HopfieldNetwork.csprojResolveAssemblyReference.cache
+c:\users\dmitry\documents\visual studio 2012\Projects\HopfieldNetwork\HopfieldNetwork\obj\Debug\MainWindow.baml
+c:\users\dmitry\documents\visual studio 2012\Projects\HopfieldNetwork\HopfieldNetwork\obj\Debug\MainWindow.g.cs
+c:\users\dmitry\documents\visual studio 2012\Projects\HopfieldNetwork\HopfieldNetwork\obj\Debug\App.g.cs
+c:\users\dmitry\documents\visual studio 2012\Projects\HopfieldNetwork\HopfieldNetwork\obj\Debug\HopfieldNetwork_MarkupCompile.cache
+c:\users\dmitry\documents\visual studio 2012\Projects\HopfieldNetwork\HopfieldNetwork\obj\Debug\HopfieldNetwork.g.resources
+c:\users\dmitry\documents\visual studio 2012\Projects\HopfieldNetwork\HopfieldNetwork\obj\Debug\HopfieldNetwork.Properties.Resources.resources
+c:\users\dmitry\documents\visual studio 2012\Projects\HopfieldNetwork\HopfieldNetwork\obj\Debug\HopfieldNetwork.csproj.GenerateResource.Cache
+c:\users\dmitry\documents\visual studio 2012\Projects\HopfieldNetwork\HopfieldNetwork\obj\Debug\HopfieldNetwork.exe
+c:\users\dmitry\documents\visual studio 2012\Projects\HopfieldNetwork\HopfieldNetwork\obj\Debug\HopfieldNetwork.pdb
+c:\users\dmitry\documents\visual studio 2012\Projects\HopfieldNetwork\HopfieldNetwork\bin\Debug\BitmapHelper.dll
+c:\users\dmitry\documents\visual studio 2012\Projects\HopfieldNetwork\HopfieldNetwork\bin\Debug\BitmapHelper.pdb

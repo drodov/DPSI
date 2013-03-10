@@ -1,0 +1,29 @@
+﻿<Window x:Class="HopfieldNetwork.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="MainWindow" Height="400" Width="600">
+    <Grid>
+        <Menu HorizontalAlignment="Stretch" Height="25" VerticalAlignment="Top">
+            <MenuItem Name="OpenFileMenuItem" Header="Open File" Click="OpenFileMenuItem_Click" />
+            <MenuItem Name="AddImageMenuItem" Header="Add Image" Click="AddImageMenuItem_Click" />
+        </Menu>
+        <Grid Margin="0,25,0,0" ShowGridLines="True" >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <StackPanel Grid.Column="0">
+                <StackPanel Orientation="Horizontal">
+                    <TextBox HorizontalAlignment="Stretch" Name="NoiseValueTextBox" Height="23" Width="100" TextWrapping="NoWrap" Text="0" IsEnabled="False" />
+                    <Button HorizontalAlignment="Stretch" Margin="50, 0, 0, 0" Name="NoiseButton" Width="100" Content="Set Noise" Click="NoiseButton_Click"/>
+                </StackPanel>
+                <Slider Minimum="0" Maximum="100" IsSnapToTickEnabled="True" TickFrequency="1" ValueChanged="Slider_ValueChanged_1"/>
+                <Image Name="SourceImage" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
+            </StackPanel>
+            <StackPanel Grid.Column="1" >
+                <Button Name="RecognizeButton" Content="Try To Recognize!" Click="RecognizeButton_Click" />
+                <Image Name="ResultImage" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
+            </StackPanel>
+        </Grid>
+    </Grid>
+</Window>
