@@ -1,0 +1,4 @@
+C:\Users\Dmitry\Documents\GitHub\DPSI\Sem8\HopfieldNetwork\BitmapHelper\bin\Release\BitmapHelper.dll
+C:\Users\Dmitry\Documents\GitHub\DPSI\Sem8\HopfieldNetwork\BitmapHelper\bin\Release\BitmapHelper.pdb
+C:\Users\Dmitry\Documents\GitHub\DPSI\Sem8\HopfieldNetwork\BitmapHelper\obj\Release\BitmapHelper.dll
+C:\Users\Dmitry\Documents\GitHub\DPSI\Sem8\HopfieldNetwork\BitmapHelper\obj\Release\BitmapHelper.pdb

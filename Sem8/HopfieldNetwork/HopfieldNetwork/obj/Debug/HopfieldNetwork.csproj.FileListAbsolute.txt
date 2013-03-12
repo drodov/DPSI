@@ -13,3 +13,18 @@ c:\users\dmitry\documents\visual studio 2012\Projects\HopfieldNetwork\HopfieldNe
 c:\users\dmitry\documents\visual studio 2012\Projects\HopfieldNetwork\HopfieldNetwork\obj\Debug\HopfieldNetwork.pdb
 c:\users\dmitry\documents\visual studio 2012\Projects\HopfieldNetwork\HopfieldNetwork\bin\Debug\BitmapHelper.dll
 c:\users\dmitry\documents\visual studio 2012\Projects\HopfieldNetwork\HopfieldNetwork\bin\Debug\BitmapHelper.pdb
+C:\Users\Dmitry\Documents\GitHub\DPSI\Sem8\HopfieldNetwork\HopfieldNetwork\bin\Debug\HopfieldNetwork.exe.config
+C:\Users\Dmitry\Documents\GitHub\DPSI\Sem8\HopfieldNetwork\HopfieldNetwork\obj\Debug\HopfieldNetwork.exe
+C:\Users\Dmitry\Documents\GitHub\DPSI\Sem8\HopfieldNetwork\HopfieldNetwork\obj\Debug\HopfieldNetwork.pdb
+C:\Users\Dmitry\Documents\GitHub\DPSI\Sem8\HopfieldNetwork\HopfieldNetwork\bin\Debug\HopfieldNetwork.exe
+C:\Users\Dmitry\Documents\GitHub\DPSI\Sem8\HopfieldNetwork\HopfieldNetwork\bin\Debug\HopfieldNetwork.pdb
+C:\Users\Dmitry\Documents\GitHub\DPSI\Sem8\HopfieldNetwork\HopfieldNetwork\bin\Debug\BitmapHelper.dll
+C:\Users\Dmitry\Documents\GitHub\DPSI\Sem8\HopfieldNetwork\HopfieldNetwork\bin\Debug\BitmapHelper.pdb
+C:\Users\Dmitry\Documents\GitHub\DPSI\Sem8\HopfieldNetwork\HopfieldNetwork\obj\Debug\HopfieldNetwork.csprojResolveAssemblyReference.cache
+C:\Users\Dmitry\Documents\GitHub\DPSI\Sem8\HopfieldNetwork\HopfieldNetwork\obj\Debug\MainWindow.baml
+C:\Users\Dmitry\Documents\GitHub\DPSI\Sem8\HopfieldNetwork\HopfieldNetwork\obj\Debug\MainWindow.g.cs
+C:\Users\Dmitry\Documents\GitHub\DPSI\Sem8\HopfieldNetwork\HopfieldNetwork\obj\Debug\App.g.cs
+C:\Users\Dmitry\Documents\GitHub\DPSI\Sem8\HopfieldNetwork\HopfieldNetwork\obj\Debug\HopfieldNetwork_MarkupCompile.cache
+C:\Users\Dmitry\Documents\GitHub\DPSI\Sem8\HopfieldNetwork\HopfieldNetwork\obj\Debug\HopfieldNetwork.g.resources
+C:\Users\Dmitry\Documents\GitHub\DPSI\Sem8\HopfieldNetwork\HopfieldNetwork\obj\Debug\HopfieldNetwork.Properties.Resources.resources
+C:\Users\Dmitry\Documents\GitHub\DPSI\Sem8\HopfieldNetwork\HopfieldNetwork\obj\Debug\HopfieldNetwork.csproj.GenerateResource.Cache

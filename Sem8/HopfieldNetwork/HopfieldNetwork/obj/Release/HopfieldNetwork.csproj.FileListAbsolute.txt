@@ -1,0 +1,15 @@
+C:\Users\Dmitry\Documents\GitHub\DPSI\Sem8\HopfieldNetwork\HopfieldNetwork\bin\Release\HopfieldNetwork.exe.config
+C:\Users\Dmitry\Documents\GitHub\DPSI\Sem8\HopfieldNetwork\HopfieldNetwork\bin\Release\HopfieldNetwork.exe
+C:\Users\Dmitry\Documents\GitHub\DPSI\Sem8\HopfieldNetwork\HopfieldNetwork\bin\Release\HopfieldNetwork.pdb
+C:\Users\Dmitry\Documents\GitHub\DPSI\Sem8\HopfieldNetwork\HopfieldNetwork\bin\Release\BitmapHelper.dll
+C:\Users\Dmitry\Documents\GitHub\DPSI\Sem8\HopfieldNetwork\HopfieldNetwork\bin\Release\BitmapHelper.pdb
+C:\Users\Dmitry\Documents\GitHub\DPSI\Sem8\HopfieldNetwork\HopfieldNetwork\obj\Release\HopfieldNetwork.csprojResolveAssemblyReference.cache
+C:\Users\Dmitry\Documents\GitHub\DPSI\Sem8\HopfieldNetwork\HopfieldNetwork\obj\Release\MainWindow.baml
+C:\Users\Dmitry\Documents\GitHub\DPSI\Sem8\HopfieldNetwork\HopfieldNetwork\obj\Release\MainWindow.g.cs
+C:\Users\Dmitry\Documents\GitHub\DPSI\Sem8\HopfieldNetwork\HopfieldNetwork\obj\Release\App.g.cs
+C:\Users\Dmitry\Documents\GitHub\DPSI\Sem8\HopfieldNetwork\HopfieldNetwork\obj\Release\HopfieldNetwork_MarkupCompile.cache
+C:\Users\Dmitry\Documents\GitHub\DPSI\Sem8\HopfieldNetwork\HopfieldNetwork\obj\Release\HopfieldNetwork.g.resources
+C:\Users\Dmitry\Documents\GitHub\DPSI\Sem8\HopfieldNetwork\HopfieldNetwork\obj\Release\HopfieldNetwork.Properties.Resources.resources
+C:\Users\Dmitry\Documents\GitHub\DPSI\Sem8\HopfieldNetwork\HopfieldNetwork\obj\Release\HopfieldNetwork.csproj.GenerateResource.Cache
+C:\Users\Dmitry\Documents\GitHub\DPSI\Sem8\HopfieldNetwork\HopfieldNetwork\obj\Release\HopfieldNetwork.exe
+C:\Users\Dmitry\Documents\GitHub\DPSI\Sem8\HopfieldNetwork\HopfieldNetwork\obj\Release\HopfieldNetwork.pdb

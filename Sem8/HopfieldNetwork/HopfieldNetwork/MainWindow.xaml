@@ -22,7 +22,7 @@
             </StackPanel>
             <StackPanel Grid.Column="1" >
                 <Button Name="RecognizeButton" Content="Try To Recognize!" Click="RecognizeButton_Click" />
-                <Image Name="ResultImage" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
+                <Image Margin="0,25,0,0" Name="ResultImage" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
             </StackPanel>
         </Grid>
     </Grid>

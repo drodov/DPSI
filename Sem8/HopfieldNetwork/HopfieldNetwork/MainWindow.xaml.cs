@@ -136,57 +136,45 @@ namespace HopfieldNetwork
                     }
                 }
             }
-            foreach (var stdVector in _standardImageVectors)
-            {
-                for (int i = 0; i < 4; i++)
-                {
-                    for (int j = 0; j < 4; j++)
-                    {
-                        _knowledgeMatrix[j, i] += (i == j) ? 0 : stdVector[j] * stdVector[i];
-                    }
-                }
-            }
 
             Bitmap sourceBitmap = BitmapConverter.BitmapImage2Bitmap(_noisedImage);
             int[] sourceImageVector = GetImageVector(sourceBitmap);
             int counter = 0;
+            int[] temp = new int[_pixelsNumber];
             while(true)
             {
-                int recognizedImageIdx = IsImageRecognized(sourceImageVector);
-                if (recognizedImageIdx != -1)
-                {
-                    ResultImage.Source = _standardImages[recognizedImageIdx];
-                    return;
-                }
+                temp = Copy(sourceImageVector);
                 sourceImageVector = MultiplyMatrixAndColumn(_knowledgeMatrix, sourceImageVector);
                 counter++;
-                if(counter == 100)
+                if (IsEqual(temp, sourceImageVector))
                 {
-                    ResultImage.Source = null;
-                    MessageBox.Show("Couldn't recognize :(");
+                    ResultImage.Source = BitmapConverter.Bitmap2BitmapImage(GetImageFromVector(sourceImageVector));
+                    MessageBox.Show("Iterations" + counter.ToString());
                     return;
                 }
             }
         }
 
-        private int IsImageRecognized(int[] imageVector)
+        private bool IsEqual(int[] vector1, int[] vector2)
         {
-            for(int idx = 0; idx < _standardImageVectors.Count; idx++)
+            for (int i = 0; i < vector1.Length; i++)
             {
-                bool flagMatch = true;
-                for(int i = 0; i < _standardImageVectors[idx].Length; i++)
+                if (vector1[i] != vector2[i])
                 {
-                    if(imageVector[i] != _standardImageVectors[idx][i])
-                    {
-                        flagMatch = false;
-                    }
-                }
-                if(flagMatch)
-                {
-                    return idx;
+                    return false;
                 }
             }
-            return -1;
+            return true;
+        }
+
+        private int[] Copy(int[] vector)
+        {
+            int[] temp = new int[_pixelsNumber];
+            for (int i = 0; i < vector.Length; i++)
+            {
+                temp[i] = vector[i];
+            }
+            return temp;
         }
 
         private int[] MultiplyMatrixAndColumn(int[,] matrix, int[] column)
@@ -206,14 +194,27 @@ namespace HopfieldNetwork
         private int[] GetImageVector(Bitmap image)
         {
             var imageVector = new int[_pixelsNumber];
-            for(int y = 0 ; y < _height; y++)
+            for (int y = 0; y < _height; y++)
             {
-                for(int x = 0; x < _width; x++)
+                for (int x = 0; x < _width; x++)
                 {
-                    imageVector[y*_width + x] = (image.GetPixel(x, y).R > 150) ? 1 : -1;
+                    imageVector[y * _width + x] = (image.GetPixel(x, y).R > 150) ? 1 : -1;
                 }
             }
             return imageVector;
+        }
+
+        private Bitmap GetImageFromVector(int[] vector)
+        {
+            Bitmap bitmap = new Bitmap(_width, _height);
+            for (int y = 0; y < _height; y++)
+            {
+                for (int x = 0; x < _width; x++)
+                {
+                    bitmap.SetPixel(x, y, vector[y*_width + x] >= 0 ? Color.White : Color.Black);
+                }
+            }
+            return bitmap;
         }
     }
 }
