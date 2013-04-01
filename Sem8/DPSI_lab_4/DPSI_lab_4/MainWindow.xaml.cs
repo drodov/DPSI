@@ -342,7 +342,7 @@ namespace DPSI_lab_4
             {
                 for (int j = 0; j < y.Length; j++)
                 {
-                    eErrors[i] = dErrors[j] * y[j] * (1 - y[j]) * W[i, j];
+                    eErrors[i] += dErrors[j] * y[j] * (1 - y[j]) * W[i, j];
                 }
             }
             return eErrors;
