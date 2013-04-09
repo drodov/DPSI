@@ -1,0 +1,45 @@
+﻿<Window x:Class="DPSI_lab_6.LearningResultsWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="LearningResultsWindow" Height="300" Width="300">
+    <Grid>
+        <StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <Image Name="Image1" Height="20" Width="20"/>
+                <Label Name="Result1" Width="200" Content=""/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <Image Name="Image2" Height="20" Width="20"/>
+                <Label Name="Result2" Width="200" Content=""/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <Image Name="Image3" Height="20" Width="20"/>
+                <Label Name="Result3" Width="200" Content=""/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <Image Name="Image4" Height="20" Width="20"/>
+                <Label Name="Result4" Width="200" Content=""/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <Image Name="Image5" Height="20" Width="20"/>
+                <Label Name="Result5" Width="200" Content=""/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <Image Name="Image6" Height="20" Width="20"/>
+                <Label Name="Result6" Width="200" Content=""/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <Image Name="Image7" Height="20" Width="20"/>
+                <Label Name="Result7" Width="200" Content=""/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <Image Name="Image8" Height="20" Width="20"/>
+                <Label Name="Result8" Width="200" Content=""/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <Image Name="Image9" Height="20" Width="20"/>
+                <Label Name="Result9" Width="200" Content=""/>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Window>

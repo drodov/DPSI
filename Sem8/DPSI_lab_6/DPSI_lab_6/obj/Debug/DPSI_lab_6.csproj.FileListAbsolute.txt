@@ -1,0 +1,16 @@
+C:\Users\Dmitry\Documents\GitHub\DPSI\Sem8\DPSI_lab_6\DPSI_lab_6\bin\Debug\DPSI_lab_6.exe.config
+C:\Users\Dmitry\Documents\GitHub\DPSI\Sem8\DPSI_lab_6\DPSI_lab_6\bin\Debug\DPSI_lab_6.exe
+C:\Users\Dmitry\Documents\GitHub\DPSI\Sem8\DPSI_lab_6\DPSI_lab_6\bin\Debug\DPSI_lab_6.pdb
+C:\Users\Dmitry\Documents\GitHub\DPSI\Sem8\DPSI_lab_6\DPSI_lab_6\bin\Debug\BitmapHelper.dll
+C:\Users\Dmitry\Documents\GitHub\DPSI\Sem8\DPSI_lab_6\DPSI_lab_6\obj\Debug\DPSI_lab_6.csprojResolveAssemblyReference.cache
+C:\Users\Dmitry\Documents\GitHub\DPSI\Sem8\DPSI_lab_6\DPSI_lab_6\obj\Debug\MainWindow.baml
+C:\Users\Dmitry\Documents\GitHub\DPSI\Sem8\DPSI_lab_6\DPSI_lab_6\obj\Debug\MainWindow.g.cs
+C:\Users\Dmitry\Documents\GitHub\DPSI\Sem8\DPSI_lab_6\DPSI_lab_6\obj\Debug\App.g.cs
+C:\Users\Dmitry\Documents\GitHub\DPSI\Sem8\DPSI_lab_6\DPSI_lab_6\obj\Debug\DPSI_lab_6_MarkupCompile.cache
+C:\Users\Dmitry\Documents\GitHub\DPSI\Sem8\DPSI_lab_6\DPSI_lab_6\obj\Debug\DPSI_lab_6.g.resources
+C:\Users\Dmitry\Documents\GitHub\DPSI\Sem8\DPSI_lab_6\DPSI_lab_6\obj\Debug\DPSI_lab_6.Properties.Resources.resources
+C:\Users\Dmitry\Documents\GitHub\DPSI\Sem8\DPSI_lab_6\DPSI_lab_6\obj\Debug\DPSI_lab_6.csproj.GenerateResource.Cache
+C:\Users\Dmitry\Documents\GitHub\DPSI\Sem8\DPSI_lab_6\DPSI_lab_6\obj\Debug\DPSI_lab_6.exe
+C:\Users\Dmitry\Documents\GitHub\DPSI\Sem8\DPSI_lab_6\DPSI_lab_6\obj\Debug\DPSI_lab_6.pdb
+C:\Users\Dmitry\Documents\GitHub\DPSI\Sem8\DPSI_lab_6\DPSI_lab_6\obj\Debug\LearningResultsWindow.baml
+C:\Users\Dmitry\Documents\GitHub\DPSI\Sem8\DPSI_lab_6\DPSI_lab_6\obj\Debug\LearningResultsWindow.g.cs
