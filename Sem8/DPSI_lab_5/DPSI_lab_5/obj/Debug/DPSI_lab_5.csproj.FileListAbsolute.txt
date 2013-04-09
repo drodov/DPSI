@@ -1,0 +1,13 @@
+C:\Users\Dmitry\Documents\GitHub\DPSI\Sem8\DPSI_lab_5\DPSI_lab_5\bin\Debug\DPSI_lab_5.exe.config
+C:\Users\Dmitry\Documents\GitHub\DPSI\Sem8\DPSI_lab_5\DPSI_lab_5\bin\Debug\DPSI_lab_5.exe
+C:\Users\Dmitry\Documents\GitHub\DPSI\Sem8\DPSI_lab_5\DPSI_lab_5\bin\Debug\DPSI_lab_5.pdb
+C:\Users\Dmitry\Documents\GitHub\DPSI\Sem8\DPSI_lab_5\DPSI_lab_5\obj\Debug\DPSI_lab_5.csprojResolveAssemblyReference.cache
+C:\Users\Dmitry\Documents\GitHub\DPSI\Sem8\DPSI_lab_5\DPSI_lab_5\obj\Debug\MainWindow.baml
+C:\Users\Dmitry\Documents\GitHub\DPSI\Sem8\DPSI_lab_5\DPSI_lab_5\obj\Debug\MainWindow.g.cs
+C:\Users\Dmitry\Documents\GitHub\DPSI\Sem8\DPSI_lab_5\DPSI_lab_5\obj\Debug\App.g.cs
+C:\Users\Dmitry\Documents\GitHub\DPSI\Sem8\DPSI_lab_5\DPSI_lab_5\obj\Debug\DPSI_lab_5_MarkupCompile.cache
+C:\Users\Dmitry\Documents\GitHub\DPSI\Sem8\DPSI_lab_5\DPSI_lab_5\obj\Debug\DPSI_lab_5.g.resources
+C:\Users\Dmitry\Documents\GitHub\DPSI\Sem8\DPSI_lab_5\DPSI_lab_5\obj\Debug\DPSI_lab_5.Properties.Resources.resources
+C:\Users\Dmitry\Documents\GitHub\DPSI\Sem8\DPSI_lab_5\DPSI_lab_5\obj\Debug\DPSI_lab_5.csproj.GenerateResource.Cache
+C:\Users\Dmitry\Documents\GitHub\DPSI\Sem8\DPSI_lab_5\DPSI_lab_5\obj\Debug\DPSI_lab_5.exe
+C:\Users\Dmitry\Documents\GitHub\DPSI\Sem8\DPSI_lab_5\DPSI_lab_5\obj\Debug\DPSI_lab_5.pdb
